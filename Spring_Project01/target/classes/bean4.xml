@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- 级联赋值 -->
+    <bean id="emp" class="com.AtGuiGu.Spring.bean.Emp">
+        <!-- 设置两个普通的属性-->
+        <property name="ename" value="emp2"></property>
+        <property name="gender" value="female"></property>
+        <!-- 级联赋值-->
+        <property name="dept" ref="dempt"></property>
+        <!-- 设置/修改dept的属性的类属性dname的值为IT-->
+        <property name="dept.dname" value="IT"></property>
+    </bean>
+    <!--内部bean-->
+    <bean id="dempt" class="com.AtGuiGu.Spring.bean.Dept">
+        <!-- 内部bean设置bean对应的属性-->
+        <property name="dname" value="sports"></property>
+    </bean>
+</beans>

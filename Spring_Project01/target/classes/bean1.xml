@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--1 配置User对象的创建 -->
+    <bean id="user" class="com.AtGuiGu.Spring.User"></bean>
+
+    <!--2.1 set方法注入属性 -->
+    <bean id="book" class="com.AtGuiGu.Spring.testDemo.Book">
+        <!-- 使用properties完成属性注入
+            name:类属性名称
+            value:向对应属性注入的值
+        -->
+        <property name="bname" value="三国"></property>
+        <property name="bauthor" value="三国的作者"></property>
+        <!-- null值 -->
+<!--        <property name="address"><null/></property>-->
+        <!-- 属性值包含特殊符号
+            1 把<>进行转义 &lt;代表左括号 &gt;代表右括号
+            2 把待特殊符号内容写到CDATA 语法为 <value> <![CDATA[内容]]> </value>
+        -->
+<!--        <property name="address" value="&lt;&lt;南京&gt;&gt;"></property>-->
+        <property name="address"><value><![CDATA[<<南京>>]]></value>
+        </property>
+    </bean>
+
+
+<!--    &lt;!&ndash;2.2简化的set方法注入属性 &ndash;&gt;-->
+<!--    <bean id="book" class="com.AtGuiGu.Spring.testDemo.Book" p:bname="bookname2" p:bauthor="bookname2's_author">-->
+<!--    </bean>-->
+
+    <!--3 有参构造注入属性 无需添加无参构造-->
+    <bean id="orders" class="com.AtGuiGu.Spring.testDemo.Orders">
+        <!--  使用constructor-arg标签 以及利用 name value 赋值实现属性的注入      -->
+        <constructor-arg name="oname" value="order_01"></constructor-arg>
+        <constructor-arg name="address" value="1654 McIntyre St,MI,USA"></constructor-arg>
+
+        <!-- 也可以通过index对属性赋值, 0代表构造器第一个形参1代表第二个       -->
+<!--        <constructor-arg index="0" value="abc"></constructor-arg>-->
+<!--        <constructor-arg index="1" value="abcd"></constructor-arg>-->
+    </bean>
+
+
+
+
+</beans>

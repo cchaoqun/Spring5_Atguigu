@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+    <!--1 提取list集合类型属性注入-->
+    <util:list id="extractList">
+        <value>三国</value>
+        <value>水浒</value>
+        <value>红楼</value>
+    </util:list>
+
+
+    <!--2 提取Map集合类型属性注入-->
+    <util:map id="extractMap">
+        <entry key="key1" value="val1"></entry>
+        <entry key="key2" value="val2"></entry>
+        <entry key="key3" value="val3"></entry>
+    </util:map>
+    <!--3 提取set集合类型属性注入-->
+    <util:set id="extractSet">
+        <value>num1</value>
+        <value>num2</value>
+        <value>num3</value>
+    </util:set>
+
+    <!--4 提取list map set 集合类型属性注入使用-->
+    <bean id="extract" class="com.AtGuiGu.Spring2_CollectionType.Step1_Collection.Extract" scope="prototype">
+        <property name="list" ref="extractList"></property>
+        <property name="map" ref="extractMap"></property>
+        <property name="set" ref="extractSet"></property>
+    </bean>
+
+</beans>

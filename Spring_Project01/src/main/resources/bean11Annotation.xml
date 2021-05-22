@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- 开启组件扫描
+        1.如果扫描多个包, 在base-package="多个包的路径之间用逗号隔开"
+        2.扫描多个包的上层目录
+
+    -->
+<!--    <context:component-scan base-package="com.AtGuiGu.Spring6_Annotation.dao, com.AtGuiGu.Spring6_Annotation.service"></context:component-scan>-->
+    <context:component-scan base-package="com.AtGuiGu.Spring6_Annotation"></context:component-scan>
+
+    <!-- 示例1 设置扫描哪些内容
+        use-default-filter="false" 表示现在不使用默认filter, 自己配置filter
+        context:include-filter,  到com.AtGuiGu中扫描注解类型为Controller的类
+    -->
+<!--    <context:component-scan base-package="com.AtGuiGu" use-default-filters="false">-->
+<!--        <context:include-filter type="annotation"-->
+<!--                                expression="org.springframework.stereotype.Controller"/>-->
+<!--    </context:component-scan>-->
+
+    <!-- 示例2 设置不扫描哪些内容
+            下面的配置扫描包内的所有内容
+            context:exclude-filter,  设置Controller类型的注解的类不扫描
+        -->
+<!--    <context:component-scan base-package="com.AtGuiGu">-->
+<!--        <context:exclude-filter type="annotation"-->
+<!--                                expression="org.springframework.stereotype.Controller"/>-->
+<!--    </context:component-scan>-->
+
+</beans>
